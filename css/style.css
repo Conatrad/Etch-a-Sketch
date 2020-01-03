@@ -1,0 +1,21 @@
+body {
+    vertical-align: center;
+}
+
+section {
+    margin: auto;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    background-color: red;
+}
+
+.grid {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    background-color: blue;
+}

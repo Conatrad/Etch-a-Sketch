@@ -1,8 +1,9 @@
 let size = 16;
 let container = document.querySelector('.container');
 let main = document.querySelector('.main');
+let pixel;
 
-generateGrid = () => {
+function generateGrid() {
 
     for(let h = 0; h < size; h++)
     {
@@ -16,32 +17,28 @@ generateGrid = () => {
     print();
 }
 
-generateGrid();
-
-
-function hover(){
-
-    let pixel = document.querySelectorAll('div');
-    pixel.forEach(function(pixel){
-        pixel.addEventListener('mouseover', () => {
-            pixel.classList.remove('red');
+hover = () => {
+pixel = document.querySelectorAll('div');
+pixel.forEach(function(pixel){
+    pixel.addEventListener('mouseover', () => {
+        pixel.classList.remove('red');
         })
-})
-return pixel;
+    })
 }
 
-function print() {
+print = () => {
+    
     container.style.cssText = 'grid-template-columns: repeat(' + size + ', 1fr); grid-template-rows: repeat(' + size + ', 1fr);'
     main.appendChild(container);
     hover();
 }
 
 let clearBtn = document.querySelector('#clear');
-let resize = document.querySelector('#resize');
+let resizeBtn = document.querySelector('#resize');
 
 clearBtn.addEventListener('click', clear);
 
-resize.addEventListener('click', () => {
+resizeBtn.addEventListener('click', () => {
     size = prompt('How many pixels would you like the canvas to be? \n Pick a number between 1 and 50');
     size = size > 50 ? size = 50 : size = size;
     size = size < 1 ? size = 1 : size = size;
@@ -49,8 +46,10 @@ resize.addEventListener('click', () => {
     clear();
 })
 
-function clear(){
+clear = () => {
     pixel.forEach(function (pixel){ 
         pixel.classList.add('red'); 
     })
 }
+
+document.onload = generateGrid();
